@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <center>
+        <h1 style="color: violet;">
+            Insert Record Into PSQL
+        </h1>
+        <hr/>
+        <form method="POST">
+            {% csrf_token %}    <!-- in django it protects our data from hackers when we posted it, bu yoksa error alıyormuş? --> 
+            <table border="1">
+                <tr>        <!-- eng_id yi girmedik gerekecek mi bak ona -->
+                    <td> Engineer Name </td>    <!--bura başlık gibi-->
+                    <td> <input type="text" placeholder="Enter Engineer Name" name="name">    </td>  <!--name i viewstaki namein aynısı yapmalısın--> 
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Insert" /></td>
+                </tr>
+            </table>
+    </form>
+    </center>
+    
+{% endblock %}

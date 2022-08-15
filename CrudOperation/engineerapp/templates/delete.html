@@ -1,0 +1,24 @@
+{%  extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+
+
+			<p>Are you sure you want to delete "{{item.name}}"?</p>
+
+			<form action="{% url 'engineerapp:delete' item.engineer_id  %}" method="POST">  
+				
+				{% csrf_token %}
+				<a class="btn btn-warning" href="{% url 'engineerapp:home' %}">Cancel</a>
+
+				<input class="btn btn-danger" name="Confirm" type="submit" > <!-- Confirm değil gönder çıkıyor submiti çeviriyor niyeyse-->
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

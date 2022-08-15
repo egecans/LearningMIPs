@@ -1,0 +1,33 @@
+{%  extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md">
+		<div class="card card-body">
+			<h5> {{message}}</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{remainingsteps}}</h1>
+		</div>
+	</div>
+</div>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form}}
+
+    <div class="row"> 
+        <input style="margin-left: 10px;" type="submit" name="Submit">
+        {% if request.user.is_staff %}  <!-- to see the admin -->
+        <a style="margin-left: 10px;" class="btn btn-warning" href="{% url 'engineerapp:engineer' engineer.engineer_id %}"> Back to the Engineer Page </a>
+        {% endif %}
+        {% if not request.user.is_staff %}  <!-- to see the user -->
+        <a style="margin-left: 10px;" class="btn btn-warning" href="{% url 'engineerapp:user-page' %}"> Back to the User Page </a>
+        {% endif %}
+    </div>
+
+
+</form>
+
+
+{% endblock %}

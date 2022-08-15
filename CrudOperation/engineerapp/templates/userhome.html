@@ -1,0 +1,54 @@
+{%  extends 'main.html' %}
+{% load static %}
+{% block content %}
+<body style="background-color: rgba(218, 205, 130, 0.879);">
+
+    <div class="row">
+        <div class="col">
+            <img src="{% static "images/createlp.jpg" %}" alt="">
+        </div>
+
+        <div class="col">
+            <br>
+            <h2 style="color: rgb(59, 49, 42); text-align: center;"> Welcome to the Learning Academy !</h2>
+            <br>
+            <p style="margin-right: 30px; margin-left: 30px; font-size: 18px;  " >
+                You can add which learning path you want! To see the learning path Click to the Learning Paths in navigation bar.
+                Each learning path has steps, you should add these steps to complete the learning path. Once you complete the all steps,
+                when you click adding step, you will see the "Congratulations, you complete the learning path!" message. 
+                After you see this message, you should wait the advisor for giving you MIP and then accreditation of that learning path.
+            <br>    <br>
+            </p>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <img width="120" height="90" src="{% static "images/pythonlogo.jpg" %}" alt="">
+        </div>
+        <div class="col">
+            <img width="120" height="90" src="{% static "images/djangologo.jpg" %}" alt="">
+        </div>
+        <div class="col">
+            <img width="120" height="90" src="{% static "images/postgresqllogo.jpg" %}" alt="">
+        </div>
+        <div class="col">
+            <img width="120" height="90" src="{% static "images/javalogo.jpg" %}" alt="">
+        </div>
+        <div class="col">
+            <img width="120" height="90" src="{% static "images/javascriptlogo.jpg" %}" alt="">
+        </div>
+        <div class="col">
+            <img width="120" height="90" src="{% static "images/htmllogo.jpg" %}" alt="">
+        </div>
+        <div class="col">
+            <img width="120" height="90" src="{% static "images/csslogo.jpg" %}" alt="">
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+</body>
+
+{% endblock %}

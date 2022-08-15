@@ -1,0 +1,105 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    <center>
+        
+            
+        <div class="row"> 
+            <div class="col-md-5">
+                <div class="card card-body">
+                    <h1 style="color: navy;">
+                        Engineer Table
+                    </h1>
+                    <a class="btn btn-primary btn-sm btn-block" href="{% url 'engineerapp:insertEngineer' %}"> Create New Engineer</a>
+                    <table class="table table-sm">
+                        <tr>
+                            <!--<th>Engineer ID</th>-->
+                            <th>    </th>
+                            <th>Engineer Name</th>
+                        </tr>
+                        {% for result in data%}     <!-- data ismi viewstan geldi --> 
+                        <tr>
+                            <!--<td>{{result.engineer_id}}</td>--> 
+                            <td><img src="{% static 'images/engineeremoji.jpg' %}"></td>
+                            <td>{{result.name}}</td>
+                            <td><a class="btn btn-sm btn-info"  href="{% url 'engineerapp:updateEngineer' result.engineer_id %}" > Edit </a> </td>
+            <!--<td><a class="btn btn-sm btn-danger" href="delete/{{result.engineer_id}}" onclick="return confirm('Are you sure ?')" > Delete </a></td>-->
+                            <td><a class="btn btn-sm btn-danger" href="delete/{{result.engineer_id}}"> Delete </a></td>                        
+                            <!--onclick is a simple JavaScript func-->
+                            <td><a class="btn btn-sm btn-info" href="engineer/{{result.engineer_id}}"> See Learning Paths</a></td>
+                        </tr>
+                        {% endfor%}                 <!--for loop bitiriyor-->   
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="card card-body">
+                    <h2 style="color: navy;">
+                        Accreditation Table
+                    </h2>
+                    <table class="table table-sm">
+                        <tr>
+                            <th>Engineer Name</th>
+                            <th>MIP Name</th>
+                        </tr>
+                        {% for accreditation in accs %}     
+                        <tr>
+                            <td>{{accreditation.engineer}}</td>
+                            <td>{{accreditation.mip}}</td>
+                            <td><a class="btn btn-sm btn-danger" href="{% url 'engineerapp:deleteAcc' accreditation.acc_id %}"> Delete </a></td>
+                        </tr>
+                        {% endfor%}                 
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">    
+            <div class="col-md-5">
+                <div class="card card-body">
+                    <h2 style="color: navy;">
+                        Engineer Learning Path Table
+                    </h2>
+                    <table class="table table-sm">
+                        <tr>
+                            <th>Engineer Name</th>
+                            <th>Learning Path</th>
+                        </tr>
+                        {% for engLP in EngLP %}     <!-- data ismi viewstan geldi --> 
+                        <tr>
+                            <td>{{engLP.engineer}}</td>
+                            <td>{{engLP.learningpath}}</td>
+                        </tr>
+                        {% endfor%}                 <!--for loop bitiriyor-->   
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="card card-body">
+                    <h2 style="color: navy;">
+                        Completed Engineer Learning Path Step Table
+                    </h2>
+                    <table class="table table-sm">
+                        <tr>
+                            <th>Engineer Name</th>
+                            <th>Learning Path Step</th>
+                        </tr>
+                        {% for engLPS in EngLPSteps %}     
+                        <tr>
+                            <td>{{engLPS.engineer}}</td>
+                            <td>{{engLPS.lp_step}}</td>
+                        </tr>
+                        {% endfor%}                 
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </center>
+
+{% endblock %}
+

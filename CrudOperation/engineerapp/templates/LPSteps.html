@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<body style="background-color: rgba(218, 205, 130, 0.879);">
+    <center>
+<br>
+<br>
+        <div class="row">
+
+
+            <div class="col-md-9" style="margin: auto;">
+                <table class="table table-sm" style="background-color: rgb(45, 166, 122);" border="1">
+                    <tr>
+                        <th style="text-align: center; color: rgb(255, 166, 0); font-size: 24px;" > Learning Path</th>
+                        <th style="text-align: center; color: rgb(255, 166, 0); font-size: 24px;" > Step</th>
+                    </tr>
+                    {% for datas in LPSteps%}     <!-- data ismi viewstan geldi --> 
+                    <tr>
+                        <td style="text-align: center; color: rgb(255, 255, 255); font-size: 18px;">{{datas.learningpath}}</td>
+                        <td style="text-align: center; color: rgb(255, 255, 255); font-size: 18px;">{{datas.name}}</td>
+                    </tr>
+                    {% endfor%}                 <!--for loop bitiriyor-->
+                </table>
+            </div>
+
+
+        </div>
+
+    <center>
+</body>
+
+{% endblock %}

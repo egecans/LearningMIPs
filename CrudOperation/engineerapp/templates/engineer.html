@@ -1,0 +1,102 @@
+{%  extends 'main.html' %}
+
+{% block content %}
+
+	<br>
+
+<div class="row">
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>{{engineer.name}}</h5>
+		</div>
+	</div>
+ 
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total Learning Paths</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{LP_count}}</h1>
+		</div>
+	</div>
+    <div class="col-md">
+		<div class="card card-body">
+			<h5>Completed Learning Path Steps</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{LPStep_count}}</h1>
+		</div>
+	</div>
+</div>
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+				{{LPFilt.form}} <!-- bu sayede fieldların çıkıyor ama tam aratmıyor yani -->
+
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+		</div>
+	</div>
+	
+</div>
+<br>
+
+
+<div class="row">
+	<div class="col-md">
+		<center> <h2 style="color: red; margin-top: 0px; " > Learning Paths </h2>	</center>
+			<table class="table table-sm">
+				<tr>
+					<th>Learning Path</th>
+                    <th></th>
+                    <th></th>
+				</tr>
+
+				{% for lp in LP %}
+
+				<tr>
+					<td>{{lp.learningpath}}</td>
+					<!--
+					<td>{{engineer.engineer_id}}</td>
+					<td>{{lp.learningpath.learningpath_id}}</td>	 -->
+                        <!--pksını almak daha kolay yol-->
+                        <td><a class="btn btn-sm btn-danger" href="{% url 'engineerapp:deleteEngLP' lp.englp_id %}"> Delete </a></td>
+						<td><a class="btn btn-sm btn-primary" href="{% url 'engineerapp:createEngLPS' engineer.engineer_id lp.learningpath.learningpath_id %}"> Add Step </a> </td>
+						<td><a href="{% url 'engineerapp:createAccreditation' engineer.engineer_id lp.learningpath.learningpath_id %}"> Accreditation </a></td>
+				</tr>
+				{% endfor %}
+
+			</table>
+			<a class="btn btn-primary btn-sm btn-block" href="{% url 'engineerapp:createEngLP' engineer.engineer_id %}"> Create New Learning Path</a>
+	</div>
+	
+
+	
+    <div class="col-md">
+		<center> <h2 style="color: red; margin-top: 0px; " > Completed Learning Path Steps</h2>	</center>
+			<table class="table table-sm">
+				
+				<tr>
+					<th>Learning Path Name</th>
+                    <th>Learning Path Step</th>
+                    <th></th>
+				</tr>
+
+				{% for lps in LPStep %}
+
+				<tr>
+					<td>{{lps.lp_step.learningpath}}</td>
+                    <td>{{lps.lp_step}}</td>
+                        <!--pksını almak daha kolay yol-->
+                        <td><a class="btn btn-sm btn-danger" href="{% url 'engineerapp:deleteEngLPStep' lps.englpstep_id %}"> Delete </a></td>
+				</tr>
+				
+				{% endfor %}
+
+			</table>
+		</div>
+</div>
+
+{% endblock %}
